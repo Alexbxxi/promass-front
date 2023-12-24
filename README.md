@@ -1,4 +1,4 @@
-# PROMASS-FRONT 🚀
+# promass-front 🚀
 
 Esta aplicación contiene la UI para el examen de Fullstack Developer para PROMASS.
 
