@@ -73,7 +73,7 @@ const MaterialCardList: React.FC<{
 
 const BlogPage: React.FC = () => {
   const [posts, setPosts] = useState<PostDetails[]>([]);
-  const [filteredPosts, setFilteredPosts] = useState<PostDetails[]>([]); // Nuevo estado para las entradas filtradas
+  const [filteredPosts, setFilteredPosts] = useState<PostDetails[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -87,7 +87,7 @@ const BlogPage: React.FC = () => {
           'http://localhost:3000/api/v1/posts'
         );
         setPosts(response.data);
-        setFilteredPosts(response.data); // Inicialmente, las entradas filtradas son las mismas que las entradas originales
+        setFilteredPosts(response.data); // Inicialmente las entradas filtradas son las mismas que las entradas originales
       } catch (error) {
         console.error('Error al obtener posts:', error);
         setError('Error al obtener posts. Por favor, inténtalo de nuevo.');
@@ -100,7 +100,6 @@ const BlogPage: React.FC = () => {
   }, []); // Este efecto se ejecutará solo una vez al montar el componente
 
   const handleSearchChange = (searchTerm: string) => {
-    // Filtrar las entradas basándose en el término de búsqueda
     const filtered = posts.filter(
       (post) =>
         post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -108,7 +107,6 @@ const BlogPage: React.FC = () => {
         post.author.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredPosts(filtered);
-    console.log('Probando el buscador: ', filtered);
   };
 
   const handleViewMore = (id: number) => {
@@ -125,7 +123,7 @@ const BlogPage: React.FC = () => {
           color="secondary"
           variant="extended"
           aria-label="add"
-          onClick={() => navigate('/create')}
+          onClick={() => navigate('/post')}
         >
           <AddIcon />
           Crear entrada

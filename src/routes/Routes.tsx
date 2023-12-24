@@ -6,7 +6,7 @@ export const RoutesApp: React.FC = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<PostsList />} />
-        <Route path="/create" element={<Post />} />
+        <Route path="/post" element={<Post />} />
         <Route path="/post/:id" element={<PostDetail />} />
       </Routes>
     </BrowserRouter>

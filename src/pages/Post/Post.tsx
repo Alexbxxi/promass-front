@@ -5,7 +5,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { IconButton, styled } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 
 interface FormValues {
@@ -87,30 +86,22 @@ const Post: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Lógica para enviar o procesar los datos del formulario
     try {
       setSubmitting(true);
-      // Realiza la solicitud POST utilizando Axios
       const response = await axios.post(
         'http://localhost:3000/api/v1/posts',
         formValues
       );
       console.log('Respuesta del servidor:', response.data);
-      // Realiza cualquier acción adicional después de un envío exitoso, como redireccionar o mostrar un mensaje de éxito
       setSubmitSuccess(true);
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
-      // Maneja el error, por ejemplo, mostrando un mensaje de error al usuario
       setSubmitError(
         'Error al enviar el formulario. Por favor, inténtalo de nuevo.'
       );
     } finally {
       setSubmitting(false);
     }
-  };
-
-  const handleGoBack = () => {
-    history.back();
   };
 
   // Restablece el estado después de un tiempo para que el mensaje de éxito desaparezca
@@ -136,9 +127,6 @@ const Post: React.FC = () => {
   return (
     <Container maxWidth="md">
       <HearderWrapper>
-        <IconButton onClick={handleGoBack}>
-          <ArrowBackIcon />
-        </IconButton>
         <Typography variant="h4" align="center" gutterBottom>
           Entrada
         </Typography>
@@ -184,9 +172,17 @@ const Post: React.FC = () => {
           required
         />
         <Button
+          variant="outlined"
+          color="secondary"
+          onClick={() => history.back()}
+          sx={{ marginRight: '1rem' }}
+        >
+          Volver
+        </Button>
+        <Button
           type="submit"
           variant="contained"
-          color="primary"
+          color="secondary"
           disabled={disabled || submitting}
         >
           {submitting ? 'Enviando...' : 'Enviar'}

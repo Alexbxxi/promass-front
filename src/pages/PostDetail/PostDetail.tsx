@@ -81,7 +81,11 @@ const PostDetailPage: React.FC = () => {
       <h1>Detalles de la entrada</h1>
       <PostDetail id={id} />
       <BackButtonWrapper>
-        <Button variant="outlined" color='secondary' onClick={() => history.back()}>
+        <Button
+          variant="outlined"
+          color="secondary"
+          onClick={() => history.back()}
+        >
           Volver
         </Button>
       </BackButtonWrapper>
