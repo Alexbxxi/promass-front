@@ -5,6 +5,7 @@ Esta aplicación contiene la UI para el examen de Fullstack Developer para PROMA
 ## Pasos para la instalación
 
 1.- Descargar o clonar el repositorio
+<br>
 2.- Ejecutar el comando "npm install"
 
 ## Pasos para levantar el proyecto
